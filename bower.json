@@ -1,0 +1,51 @@
+{
+  "name": "seuss.md",
+  "description": "Seuss.md lets you create, edit, and sync GitHub Gists directly across OS X, Linux, Windows, iOS, and Android native environments",
+  "main": "lib/index.js",
+  "authors": [
+    "Nick Baugh <niftylettuce@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "seuss",
+    "markdown",
+    "editor",
+    "github",
+    "flavored",
+    "markdown",
+    "gists",
+    "gist",
+    "md",
+    "text",
+    "highlight",
+    "prettify",
+    "style",
+    "suess",
+    "suss",
+    "soose"
+  ],
+  "homepage": "https://github.com/niftylettuce/seuss.md",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/ui/bower",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "codemirror": "~5.10.0",
+    "highlightjs": "~9.0.0",
+    "github-markdown-css": "~2.2.0",
+    "emojify.js": "~1.1.0",
+    "markdown-it-footnote": "~2.0.0",
+    "markdown-it-checkbox": "~1.1.0",
+    "inconsolata-webfont-kit": "~1.0.2",
+    "markdown-it": "~5.1.0",
+    "normalize-css": "normalize.css#~3.0.3",
+    "splittr": "~1.0.1",
+    "sweetalert": "~1.1.3"
+  }
+}

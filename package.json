@@ -1,0 +1,55 @@
+{
+  "name": "seuss.md",
+  "version": "0.0.1",
+  "description": "Seuss.md lets you create, edit, and sync GitHub Gists directly across OS X, Linux, Windows, iOS, and Android native environments",
+  "main": "lib/index.js",
+  "scripts": {
+    "start": "electron src/ --enable-logging",
+    "watch": "nodemon -e js,json,html,css --watch src --exec electron src/ --enable-logging",
+    "lint": "eslint src",
+    "test": "npm run lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/niftylettuce/seuss.md.git"
+  },
+  "keywords": [
+    "seuss",
+    "markdown",
+    "editor",
+    "github",
+    "flavored",
+    "markdown",
+    "gists",
+    "gist",
+    "md",
+    "text",
+    "highlight",
+    "prettify",
+    "style",
+    "suess",
+    "suss",
+    "soose"
+  ],
+  "author": "Nick Baugh <niftylettuce@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/niftylettuce/seuss.md/issues"
+  },
+  "homepage": "https://github.com/niftylettuce/seuss.md#readme",
+  "devDependencies": {
+    "babel-core": "^6.4.0",
+    "babel-eslint": "^4.1.6",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-stage-0": "^6.3.13",
+    "electron-debug": "^0.5.1",
+    "electron-prebuilt-compile": "^0.36.1",
+    "nodemon": "^1.8.1"
+  },
+  "dependencies": {
+    "gemoji": "^1.0.0",
+    "lodash": "^4.0.1",
+    "spellchecker": "^3.2.0",
+    "sweetalert": "^1.1.3"
+  }
+}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>Untitled</title>
+
+  <link href="bower/normalize-css/normalize.css" rel="stylesheet" />
+  <link href="bower/codemirror/lib/codemirror.css" rel="stylesheet" />
+  <link href="bower/github-markdown-css/github-markdown.css" rel="stylesheet" />
+  <link href="bower/splittr/splittr.css" rel="stylesheet" />
+  <link href="bower/emojify.js/dist/css/basic/emojify.css" rel="stylesheet" />
+  <link href="bower/highlightjs/styles/github-gist.css" rel="stylesheet" />
+  <link href="bower/inconsolata-webfont-kit/css/inconsolata.css" rel="stylesheet" />
+  <link href="bower/sweetalert/dist/sweetalert.css" rel="stylesheet" />
+  <link href="bower/codemirror/addon/hint/show-hint.css" rel="stylesheet" />
+  <link href="style.css" rel="stylesheet" />
+
+  <script src="bower/markdown-it/dist/markdown-it.js"></script>
+  <script src="bower/markdown-it-footnote/dist/markdown-it-footnote.js"></script>
+  <script src="bower/markdown-it-checkbox/dist/markdown-it-checkbox.js"></script>
+
+  <script src="bower/codemirror/lib/codemirror.js"></script>
+
+  <script src="bower/codemirror/addon/display/autorefresh.js"></script>
+  <script src="bower/codemirror/addon/edit/continuelist.js"></script>
+  <script src="bower/codemirror/addon/edit/matchbrackets.js"></script>
+  <script src="bower/codemirror/addon/edit/trailingspace.js"></script>
+  <!-- <script src="bower/codemirror/addon/selection/active-line.js"></script> -->
+  <script src="bower/codemirror/addon/comment/continuecomment.js"></script>
+  <script src="bower/codemirror/addon/mode/overlay.js"></script>
+
+  <script src="bower/codemirror/mode/xml/xml.js"></script>
+  <script src="bower/codemirror/mode/markdown/markdown.js"></script>
+  <script src="bower/codemirror/mode/gfm/gfm.js"></script>
+  <script src="bower/codemirror/mode/javascript/javascript.js"></script>
+  <script src="bower/codemirror/mode/css/css.js"></script>
+  <script src="bower/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+
+  <script src="bower/codemirror/addon/hint/show-hint.js"></script>
+
+  <script src="bower/emojify.js/dist/js/emojify.min.js"></script>
+
+  <script src="bower/highlightjs/highlight.pack.js"></script>
+
+  <script src="bower/splittr/splittr.js"></script>
+
+  <script src="bower/sweetalert/dist/sweetalert-dev.js"></script>
+
+</head>
+<body>
+  <div id="splittr" data-splittr="vertical dynamic 600 300">
+    <textarea id="code">
+![Seuss.md](https://i.imgur.com/rZdGsXf.png)
+
+* Make the descriptions be "Created with Seuss.md"
+* Hotkey to share CMD+SHIFT+G (create a gist from it)
+* CMD+SHIFT+S to save
+
+I **would not** like them
+here or _there_.
+I would not like them
+anywhere.
+I do not like
+green eggs and ham.
+I do not like them,
+Sam-I-am
+
+- [ ]  eat green eggs
+- [ ]  eat ham
+
+```js
+foo();
+```
+
+```bash
+# hello
+```
+
+[![Cat in the hat](https://i.imgur.com/X2kPaQV.png)](http://seuss.md)
+    </textarea>
+    <div id="output-container">
+      <div id="output" class="markdown-body">Hey there</div>
+    </div>
+  </div>
+  <script src="seuss.js"></script>
+</body>
+</html>
