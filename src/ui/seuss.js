@@ -1,11 +1,35 @@
 
-import { ipcRenderer } from 'electron';
+import { webFrame, ipcRenderer } from 'electron';
 import gemoji from 'gemoji';
 import _ from 'lodash';
+import spellchecker from 'spellchecker';
+import remote from 'remote';
+import Dialogs from 'dialogs';
 
+const dialogs = new Dialogs();
+const dialog = remote.require('dialog');
 const EMOJI_LIST = _.map(gemoji.name, 'name');
 
+// TODO: add multiple languages per this issue
+// <https://github.com/atom/electron/issues/2484>
+// TODO: currently webFrame doesn't work per:
+// <https://github.com/atom/electron/issues/4167>
+webFrame.setSpellCheckProvider('en-US', true, {
+  spellCheck: text => !(spellchecker.isMisspelled(text))
+});
+
 /*globals swal, CodeMirror */
+
+// <https://github.com/atom/electron/issues/2301>
+window.onbeforeunload = (ev) => {
+  let choice = dialog.showMessageBox(remote.getCurrentWindow(), {
+      type: 'question',
+      buttons: ['Yes', 'No'],
+      title: 'Confirm',
+      message: 'Are you sure you want to quit?'
+  });
+  return choice === 0;
+};
 
 (() => {
 
@@ -50,6 +74,8 @@ const EMOJI_LIST = _.map(gemoji.name, 'name');
 
   let md = window.markdownit({
     html: true,
+    breaks: true,
+    linkify: true,
     highlight: function(code, lang) {
       if (languageOverrides[lang]) lang = languageOverrides[lang];
       if (lang && window.hljs.getLanguage(lang)) {
@@ -90,6 +116,7 @@ const EMOJI_LIST = _.map(gemoji.name, 'name');
     tabSize: 2
   });
 
+  /*
   // autocompletion of emojis
   let timeout;
 
@@ -114,6 +141,7 @@ const EMOJI_LIST = _.map(gemoji.name, 'name');
         });
     }, 150);
   });
+  */
 
   // TODO: custom fonts not working yet
   // https://github.com/codemirror/CodeMirror/issues/3764
@@ -169,12 +197,16 @@ const EMOJI_LIST = _.map(gemoji.name, 'name');
   ipcRenderer.on('command', (ev, value) => {
     console.log('value', value);
     let selection = cm.getDoc().getSelection();
+    console.log('selection', selection);
+    let r = ''; // replacement
     switch (value) {
     case 'Link':
-      let text = prompt('Displayed Text');
-      let url = prompt('URL');
-      // prompt user for text and url
-      // [text](url)
+      let text = '';
+// let text = selection === '' ? dialogs.prompt('Displayed Text') : selection;
+      let url = dialogs.prompt('URL', function(ok) {
+        console.log('prompt', ok);
+      });
+      r = `<a href="${url}">${text}</a>`;
       break;
     case 'h1':
     case 'h2':
@@ -182,8 +214,15 @@ const EMOJI_LIST = _.map(gemoji.name, 'name');
     case 'h4':
     case 'h5':
     case 'h6':
+      r = new Array(parseInt(value.replace('h', ''), 10) + 1).join('#');
+      r = `\n\n${r} ${selection}`;
+      break;
     case 'CodeSample':
+      r = `<code>${selection}</code>`;
+      break;
     case 'Horizontal Rule':
+      r = `foo ${r} bar`;
+      break;
     case 'Image':
     case 'List':
     case 'Table':
@@ -195,9 +234,10 @@ const EMOJI_LIST = _.map(gemoji.name, 'name');
     case 'Use Default':
     case 'Superscript':
     case 'Subscript':
-      cm.getDoc().replaceSelection(`<sup>${selection}</sup>`);
+      r = `<sup>${selection}</sup>`;
       break;
     }
+    cm.getDoc().replaceSelection(r);
   });
 
   // remove textarea

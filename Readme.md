@@ -1,5 +1,4 @@
 
-# Seuss.md
 
 > Work in progress markdown editor...
 

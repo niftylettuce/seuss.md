@@ -1,4 +1,15 @@
 
+//     seuss.md
+//     Copyright (c) 2016- Nick Baugh <niftylettuce@gmail.com>
+//     MIT Licensed
+
+// <insert desc>
+
+// * Author: [@niftylettuce](https://twitter.com/#!/niftylettuce)
+// * Source: <https://github.com/niftylettuce/seuss.md>
+
+// # seuss.md
+
 import {
   app,
   BrowserWindow,
@@ -11,7 +22,6 @@ import {
 import path from 'path';
 import fs from 'fs';
 import electronDebug from 'electron-debug';
-import spellchecker from 'spellchecker';
 
 import MenuBuilder from './menu-builder';
 
@@ -19,18 +29,11 @@ const icon = path.join(__dirname, 'img', 'IconTemplate.png');
 
 let tray;
 
+// TODO: https://github.com/mixmaxhq/electron-editor-context-menu
 // TODO: https://github.com/pksunkara/octonode
 // TODO: print to pdf
 // #webcontentsprinttopdfoptions-callback
 // github.com/electron/docs/api/web-contents.md
-
-// TODO: add multiple languages per this issue
-// <https://github.com/atom/electron/issues/2484>
-// TODO: currently webFrame doesn't work per:
-// <https://github.com/atom/electron/issues/4167>
-//webFrame.setSpellCheckProvider('en-US', true, {
-//  spellCheck: text => !(spellchecker.isMisspelled(text))
-//});
 
 app.on('ready', () => {
 

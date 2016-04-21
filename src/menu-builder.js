@@ -149,6 +149,10 @@ let menu = {
         type: 'separator'
       },
       {
+        label: 'Share as Gist...',
+        accelerator: 'CmdOrCtrl+Alt+G'
+      },
+      {
         label: 'Export as PDF...',
         accelerator: 'CmdOrCtrl+P'
       }
